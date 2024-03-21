@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>OWidgets</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand fw-bold" href="/">
+                    <img src="assets/img/ow-logo.svg" height="30" class="d-inline-block align-top" alt="">
+                    OWidgets
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="requirements.html">Requirements</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="research.html">Research</a></li>
+                        <li class="nav-item active"><a class="nav-link me-lg-3" href="hci.html">HCI</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="design.html">Design</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="implementation.html">Implementation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="testing.html">Testing</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="evaluation.html">Evaluation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="appendix.html">Appendix</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="page-header">
+            <aside class="text-center bg-gradient-primary-to-secondary">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="h2 fs-1 text-white font-alt mb-4">Human-Computer Interaction</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="container px-5 page-content mb-4">
+            <div class="row gx-5 justify-content-center mb-4">
+                <div class="h4 fs-1 text-black font-alt page-subheading">Sketches<hr></div>
+                <div class="fs-5 text-black">
+                    After finalizing our requirements with the MoSCoW list, and getting a better understanding of our users with the personas and storyboards, we proceeded to make sketches for our application. While making these, we often used a lot of the principles stated by Mark Basinger, 2008. Baskinger, M., 2008. Pencils before pixels: a primer in hand-generated sketching. Interactions. SIGCHI ACM Special Interest Group on Computer-Human Interaction, 15. We came up with two sketches, and presented them both to our clients OWidgets<br><br>
+                    <div class="img-flex">
+                        <div>
+                            <img src="assets/img/hci/sketch_1_1.png" class="img-fluid" alt="Sketch 1">
+                        </div>
+                        <div>
+                            <img src="assets/img/hci/sketch_1_2.png" class="img-fluid" alt="Sketch 1">
+                        </div>
+                        <div>
+                            <img src="assets/img/hci/sketch_1_3.png" class="img-fluid" alt="Sketch 1">
+                        </div>
+                    </div>
+                    <p class="fs-6 text-center" style="color: rgb(100, 100, 100)">Sketch 1</p>
+                    <div class="img-flex">
+                        <div>
+                            <img src="assets/img/hci/sketch_2_1.png" class="img-fluid" alt="Sketch 2">
+                        </div>
+                        <div>
+                            <img src="assets/img/hci/sketch_2_2.png" class="img-fluid" alt="Sketch 2">
+                        </div>
+                        <div>
+                            <img src="assets/img/hci/sketch_2_3.png" class="img-fluid" alt="Sketch 2">
+                        </div>
+                    </div>
+                    <p class="fs-6 text-center" style="color: rgb(100, 100, 100)">Sketch 2</p>
+
+                    After arranging a meeting and presenting our sketches, we took feedback from them in order to construct our first prototype. The highlights of the feedback were:<br>
+                    <ul>
+                        <li>Gas sensor will generate multiple readings at different temperatures at each time instance. Consider an array of lists.</li>
+                        <li>Current reading on sketch 1 is not necessary, should be incorporated into historical data like sketch 2.</li>
+                        <li>Need an option to read schedule file to control olfactometer.</li>
+                        <li>Need a list of channels and activation times for olfactometer.</li>
+                        <li>Setup page should not contain readings.</li>
+                        <li>Start/stop could be on main page.</li>
+                    </ul>
+                    Overall, the feedback was positive and sketch 2 was chosen as the final sketch to be used for the prototype.<br><br>
+                </div>
+
+                <div class="h4 fs-1 text-black font-alt page-subheading">Prototypes<hr></div>
+                <span class="fs-4 fw-bold">Prototype 1</span><br>
+                <div class="fs-5 text-black">
+                    Taking our sketches, requirements, and user feedback into consideration, we designed our first protoype using Figma.
+
+                    We have a green dot to indicate run finished, yellow for in progress, grey for upcoming. Rows can only be modified if they are upcoming. Also, we added a temperature array instead of slide bar. If duration is left blank, it measures from start to end by default.
+
+                    <div class="research-img">
+                        <img src="assets/img/hci/prototype-1-1.png" class="img-fluid" alt="Prototype">
+                    </div>
+
+                    We also made the freeze and start buttons the same to reduce cluttering, and added interactive graphs - scroll down to increase time axis scale and scroll up to decrease time axis scale.
+
+                    <div class="research-img">
+                        <img src="assets/img/hci/prototype-1-2.png" class="img-fluid" alt="Prototype">
+                    </div>
+
+                    For the database screen, you can scroll down to view more, or use search bar to find specific scents.
+                    <div class="research-img">
+                        <img src="assets/img/hci/prototype-1-3.png" class="img-fluid" alt="Prototype">
+                    </div>
+                    
+                    <span class="fs-4 fw-bold">Prototype 1 Evaluation</span><br>
+                    Having completed our first prototype, we arranged a meeting with our clients to present the prototype. The feedback we received was:
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div style="flex: 2">
+                            <span class="fw-bold text-decoration-underline">Setup Page:</span>
+                            <ul>
+                                <li>10 heater temperatures can be set for the gas sensor.</li>
+                                <li>Heating time can be set in milliseconds.</li>
+                                <li>The repetition rate is set by the sensor hardware. I think there are only a couple of modes, low / ultra-low power modes</li>
+                            </ul>
+                            <span class="fw-bold text-decoration-underline">Readings Page:</span>
+                            <ul>
+                                <li>The data could be stored as the readings are acquired, rather than exported after the sequence has finished.</li>
+                                <li>There needs to be an option to enter a file path to store data.</li>
+                            </ul>
+                        </div>
+
+                        <div class="research-img" style="flex: 1">
+                            <img src="assets/img/hci/prototype-1-evaluation.png" class="img-fluid" alt="Prototype Evaluation">
+                            <p class="text-center">User (hardware engineer) interacting with the prototype, using ”Wizard of Oz” technique (Sharp, Rogers and Preece, 2019)</p>
+                        </div>
+                    </div>
+
+                    In addition to receiving user feedback, we applied triangulation with heuristics evaluation for a more well-rounded assessment of the prototype as foundation for second iteration.
+                    <br><br>
+                    <table>
+                        <tr>
+                            <th>Heuristic</th>
+                            <th>Problem</th>
+                            <th>Solution</th>
+                            <th>Severity</th>
+                        </tr>
+                        <tr>
+                            <td>Recognition rather than recall</td>
+                            <td>The purpose of colored dots in the schedule table on the setup page was unclear.</td>
+                            <td>Added header "Status" to clarify what the column indicates.</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Ensuring system language matches real-world convention</td>
+                            <td>On the setup page, “Reset to default” for olfactometer schedule really performs “Clear all”, leading to confusion.</td>
+                            <td>Amended button name to “Clear all”.</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Maintaining consistency</td>
+                            <td>Buttons to add new columns and rows to tables in the setup page had different labels and positions, leading to confusion.</td>
+                            <td>Incorporated all “add new” buttons as extensions of the tables for better intuition and aesthetics.</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Recognition rather than recall</td>
+                            <td>"Refresh" button on database page was not near the "Last updated" text, making it less intuitive.</td>
+                            <td>Shifted "Last updated" text to be next to the "Refresh" button.</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Aesthetic and Minimalist Design</td>
+                            <td>Scroll bar for readings table was not obvious.</td>
+                            <td>Increased size of scroll bar.</td>
+                            <td>2</td>
+                        </tr>
+                    </table><br>
+
+                    <span class="fs-4 fw-bold">Prototype 2</span><br>
+                    Taking into account the feedback and heuristics evaluation, we designed our second prototype using Figma.
+                    <div class="img-flex">
+                        <div>
+                            <img src="assets/img/hci/prototype-2-1.png" class="img-fluid" alt="Prototype 2">
+                        </div>
+                        <div>
+                            <img src="assets/img/hci/prototype-2-2.png" class="img-fluid" alt="Prototype 2">
+                        </div>
+                        <div>
+                            <img src="assets/img/hci/prototype-2-3.png" class="img-fluid" alt="Prototype 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            Sharp, H., Rogers, Y. and Preece, J. (2019). Interaction design : Beyond human-computer interaction. 5th ed. Indianapolis, In: Wiley.
+        </div>
+
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
+                    <a href="#!">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">FAQ</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

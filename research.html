@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>OWidgets</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand fw-bold" href="/">
+                    <img src="assets/img/ow-logo.svg" height="30" class="d-inline-block align-top" alt="">
+                    OWidgets
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="requirements.html">Requirements</a></li>
+                        <li class="nav-item active"><a class="nav-link me-lg-3" href="research.html">Research</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="hci.html">HCI</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="design.html">Design</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="implementation.html">Implementation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="testing.html">Testing</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="evaluation.html">Evaluation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="appendix.html">Appendix</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="page-header">
+            <aside class="text-center bg-gradient-primary-to-secondary">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="h2 fs-1 text-white font-alt mb-4">Research</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="container px-5 page-content mb-4">
+            <div class="row gx-5 justify-content-center mb-4">
+                <div class="h4 fs-1 text-black font-alt page-subheading">Data Analysis<hr></div>
+                <div class="fs-5 text-black">
+                    <span class="fs-4 fw-bold">Preliminary Tests</span>
+                    <ul>
+                        <li>With the preliminary tests, we found that linear increase in temperatures for a heater profile (220-400 with 20C steps) and a consistent heater duration will not be suitable for our task as the reactions in samples are not consistent across sessions and sensors.</li>
+                        <li>It is known that longer heater durations for each temperature is beneficial for scent discrimination. However, we observed the opposite, with the KNN performance decreasing as the heater duration increases.</li>
+                        <li>
+                            The setup required balancing the initial stabilisation time necessary to get accurate readings and the cooldown period necessary to prevent sensor burn out through continuous data collection.
+                            <ul>
+                                <li>We observed that 30 minutes after hours of sensor inactivity is required, with 100 seconds of stabilisation before every measurement cycle and 10 seconds cooldown between measurements.</li>
+                                <li>100 seconds stabilisation time is the shortest optimal time that allows us to have enough accurate readings before the scent emission to establish the baseline for correction later.</li>
+                            </ul>
+                        </li>
+
+                        <div class="research-img">
+                            <img src="assets/img/research/figure1.png" class="img-fluid" alt="Figure 1">
+                            <p class="text-center">Figure 1: 30 minute stabilisation for hours of inactivity</p>
+                        </div>
+
+                        <li>Exception handling by the data synthesis system also had to be amended to minimize communication issues between the Raspberry Pi and olfactometer, with the olfactometer failing to enable or disable channel for about 7% of the measurement cycles. This error cascaded to fail more measurement cycles if the olfactometer instance was not restarted and communications reopened.</li>
+                        <li>From our preliminary tests, it showed that while the sensor had fairly reproducible responses to some scents, it was less so for the others, The swiftness and magnitude of the reaction to the scents varied greatly from session to session. This is a fairly well established problem with single sensors, hence most existing setups for classifying gasses utilize an array of 3 - 24 sensors.</li>
+
+                        <div class="research-img">
+                            <img src="assets/img/research/figure2.png" class="img-fluid" alt="Figure 2">
+                            <p class="text-center">Figure 2: Sensor response to scents</p>
+                        </div>
+                        
+                        <li>Image: the reaction to scent 2 (top leftmost) was reproducible across sessions with consistent magnitude and swiftness in response. This is less true for scent 1 (center left), which has great variability across sessions. It can also be seen that the two attributes (center right) do not separate the scents very well, with the exception of scent 2 and 3. Running a KNN, it achieves 73% accuracy across sessions but with confusion around scent 1.</li>
+                        <li>We conclude the preliminary tests when it is obvious to us that the classification will not be effective using linear increase in temperature for heater profile.</li>
+
+                        <br>
+                        
+                        <span class="fs-4 fw-bold">Default Heater Profile</span><br>
+                        <span class="fs-5 fw-bold">Open Environment</span>
+
+                        <li>We then used the default heater profiles in a variant of the sensor we use, BME688, which has multiple lab tested heater profiles for different applications. Our sensor differs with the 688 in that they have an array of 8 sensors, with a maximum of 4 heater profile configurations allowed for each measurement cycle.</li>
+                        <li>We begin with the default heater profile recommended by Bosch for general use cases, as seen in figure 3.</li>
+
+                        <div class="research-img">
+                            <img src="assets/img/research/figure3.png" class="img-fluid" alt="Figure 3">
+                            <p class="text-center">Figure 3: Bosch Recommended Heater Profile</p>
+                        </div>
+
+                        <li>With the new heater profile, we hoped to observe more distinctive reaction patterns between different scents. The raw resistance readings were not immediately distinguishable between scents.</li>
+                        <li>However, when using the last few measurement cycles of the stabilisation period as baseline to apply correction, it can be seen that scent 2 - 4 has a fairly distinguishable sensor reaction.</li>
+                        <li>However, scent 1 still suffers from the lack of reaction when compared to scent 0 (air), which means it received little to no reaction during emission.</li>
+                        <li>This is very interesting, as scent 1 is peppermint, which is the strongest scent in perception when compared to the others.</li>
+
+                        <div class="img-flex">
+                            <div class="research-img">
+                                <img src="assets/img/research/figure4.png" class="img-fluid" alt="Figure 4">
+                                <p class="text-center">Figure 4: Raw Readings</p>
+                            </div>
+
+                            <div class="research-img">
+                                <img src="assets/img/research/figure5.png" class="img-fluid" alt="Figure 5">
+                                <p class="text-center">Figure 5: Baseline Corrected</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                <li>We extracted 4 features: (standard deviation and mean of resistance, percentage decrease in resistance and time at the lowest resistance) for each heater index, hoping that the sensor registers different reaction at different heater temperature between scents. However, upon visualisation of the features, it can be seen that the scent are not very distinguishable.</li><br>
+                                <li>With the KNN performing only marginally better than linear increase heater profile, we decided to separate the task into two phases, first establishing a robust classification algorithm in a more restricted environment, then transfer that to an open environment.</li>
+                            </div>
+                            <div class="research-img" style="flex: 1;">
+                                <img src="assets/img/research/figure6.png" class="img-fluid" alt="Figure 6" style="max-height: 100%;">
+                                <p class="text-center">Figure 6: Feature Visualisation</p>
+                            </div>
+                        </div>
+                    </ul>
+
+                    <span class="fs-5 fw-bold">Contained Environment</span>
+
+                    <ul>
+                        <li>We move the data collection system in a large plastic container to see if the scents are actually not distinguishable, or if the concentration is not enough for a single sensor to classify in open air.</li>
+                        <li>However, this setup introduces the issue of container contamination, as 50 regular emissions of 10 seconds for every scent may affect the reading we receive.</li>
+                        <li>We attempt to minimize this issue by leaving the container to dissipate the scent for 1.5 hours between scents.</li>
+                        <li>The baseline corrected results indicate that the container causes the scents to be vastly more distinguishable, even for previously dormant scent 1.</li>
+                        <li>It can be seen that the magnitude and swiftness of resistance decrease, and the rate of recovery in resistance greatly varies between scents.</li>
+                        <li>However, we also observe that the magnitude of response decreases as more samples are collected. We suspect this is due to insufficient time between scent emissions for dissipation.</li>
+                        <li>When using the same features as we did before, the scents are now much more distinguishable when visualized.</li>
+                        
+                        ----- INSERT IMAGES PG 4-----
+
+                        <li>We see the KNN performance massively increases with a closed container, when using the same features as the previous experiment, with accuracy consistently staying above 95%.</li>
+                        <li>We also trained a small MLP multi-class classification model to see if there are representations which can learned which cannot be seen with KNN. It seems the NN increases the performance by 2-3%.</li>
+                        
+                        <div class="research-img">
+                            <img src="assets/img/research/figure8.png" class="img-fluid" alt="Figure 8">
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                                <li>Observing that scent 4 has fairly peculiar readings with high noise, we wanted to establish whether that is due to container contamination towards the end of the experiment (20+ hours)</li><br>
+                                <li>Hence, we repeated the experiment again but reversed the order to collect scent 0, then 4 to 1. We observe that the noise that not seen in the previous experiment become more prominent in scent 1 and 2, thus it is reasonable to say that the data collection can be heavily affected if there is contamination.</li>
+                            </div>
+                            <div class="research-img" style="flex: 1;">
+                                <img src="assets/img/research/figure9.png" class="img-fluid" alt="Figure 9" style="max-height: 100%;">
+                            </div>
+                        </div>
+
+                        <li>We wanted to observe what happens to the classification performance when the data from open and closed environments are mixed. As expected, performance decrease in the KNN by 20%, and MLP 10%. What is interesting is the MLP performing better than KNN by 10%, greater than the previous runs, suggesting the MLP learns unknown representations in the sample which will be useful for classification later.</li>
+
+                        <div class="research-img">
+                            <img src="assets/img/research/figure10.png" class="img-fluid" alt="Figure 10">
+                        </div>
+
+                        <li>With an accuracy of 80+, our priority is now to find better features and attempt classification without the need of time stamps.</li>
+                        <li>To see how effective the model is without timestamps, we use a window of 5 heater profile cycles as a sample (~50sec), sliding by 1 heater cycle for the next sample. This produced much more samples for each scent, but also means we cannot use features such as time at maximum dip for a feature. This allows us to see if the model can learn the hidden representation using just a few cycles as a sample, but also enables continuous prediction.</li>
+                        <li>We processed the data minimally, only using the stabilisation readings as baseline to apply correction.</li>
+                        <li>Using 5 layers, we construct the model as shown in Figure 11 with Adam optimiser and CrossEntropyLoss, achieving 81% accuracy (more layers had marginal improvements)</li>
+                        <li>We also increased the window size to 7 cycles (~70s) and saw a 1% increase in accuracy.</li>
+
+                        <div class="research-img">
+                            <img src="assets/img/research/figure11.png" class="img-fluid" alt="Figure 11">
+                            <p class="text-center">Figure 11: Model Architecture</p>
+                        </div>
+
+                        <li>With window size of 10, we saw a further 2% increase in accuracy to 84%.</li>
+                        <li>With window size of 3, the accuracy decreased to 75%.</li>
+
+                        <div class="research-img">
+                            <img src="assets/img/research/figure12.png" class="img-fluid" alt="Figure 12">
+                        </div>
+                    </ul>
+                    <span class="fs-4 fw-bold">Using TsFresh to Automise Feature Extraction</span>
+
+                    <ul>
+                        <li>We use TsFresh to run feature extraction on the existing data.</li>
+                        <li>Using only timestamp and resistance reading, disregarding heater index.</li><br>
+                        
+                        <span class="fs-5 fw-bold">Data collected with container (pure)</span>
+                        <ul>
+                            <li>We extract 658 features after the module auto-rejects irrelevant features.</li>
+                            <li>Using MLP with the architecture below, we achieve a maximum of 97.89 % accuracy.</li>
+                            <li>This shows around 2-3% improvement when compared to the previous experiment using the datasets collected in containers on Jan 27 and 29.</li>
+
+                            <div class="research-img">
+                                <img src="assets/img/research/figure13.png" class="img-fluid" alt="Figure 13">
+                            </div>
+
+                            <li>We take this further by using the <span class="fw-bold">tsfresh.feature_selection.relevance.calculate_relevance_table</span> function to see how relevant each feature actually is.</li>
+                            <li>We see that out of 658 features, there are only 85 which are actually relevant to all 5 scent classes (p-value < 0.05)</li>
+                            <li>With this information, we train a smaller neural network to see these 85 features are adequate for classification</li>
+                            <li>We achieve 96.84% accuracy, indicating these may indeed suffice</li>
+                            <li>We see that both confusion matrices have a sample wrong for air and for scent 1. Upon repeating the experiment, the confusion matrix is still the same. This may be caused by a few poor quality examples.</li>
+
+                            <div class="research-img">
+                                <img src="assets/img/research/figure14.png" class="img-fluid" alt="Figure 14">
+                            </div>
+                        </ul>
+
+                        <span class="fs-5 fw-bold">Data Collected without container (open air)</span>
+                        <ul>
+                            <li>We now see if this performance can be sustained with data collected without a container, which is less prone to contamination but has seen less sensor reaction from the scent exposure.</li>
+                            <li>We extracted 204 features, and used this to train the same neural network as above, with a highest accuracy of 83.87%.</li>
+                            <li>This is a substantial improvement from the initial 60% we achieved with minimal feature extraction (and without).</li>
+                            <li>We also calculated the feature relevance table, and what we found was that no feature is relevant for all 5 scent classes, which differs from the contained experiment. We will investigate this further from the mixed experiment.</li>
+                        </ul>
+
+                        <span class="fs-5 fw-bold">Mixed Data (Contained and Open)</span>
+                        <ul>
+                            <li>We see how mixing the datasets affects the performance, when compared to the previous experiments without automised feature extractions and sliding window (80-84% accuracy)</li>
+                            <li>We extracted and filtered the features with 658 left for training</li>
+                            <li>This achieves a maximum of 92.73% accuracy, which is around 10% increase when compared to the previous mixed experiment with sliding window (no feature extraction), and 5% increase when compared to previous mixed experiment with manual feature extraction.</li>
+                            <li>We once again calculated the feature relevance table, and found this time 61 features which are relevant to all scent classes. This is less than the contained experiment (85) but much more than the open air experiment.</li>
+                            <li>We train a neural network with only these 61 features, and we achieve a highest accuracy of 89.09%. We now see that the automised feature extraction only offered 2% increase in accuracy. This is perhaps due to the imbalanced data sizes between open air data and container data.</li>
+                            
+                            <div class="img-flex">
+                                <div class="research-img">
+                                    <img src="assets/img/research/figure15.png" class="img-fluid" alt="Figure 15">
+                                    <p class="text-center">685 Features</p>
+                                </div>
+
+                                <div class="research-img">
+                                    <img src="assets/img/research/figure16.png" class="img-fluid" alt="Figure 16">
+                                    <p class="text-center">61 Features</p>
+                                </div>
+                            </div>
+                        </ul>
+
+                        <span class="fs-4 fw-bold">Open Air Sliding Window</span>
+                        <ul>
+                            <li>We now use the sliding window technique we used to gather more data out of a measurement cycle as before, using 5 data points (5 heater profile cycles) as a sample, then take the most recent 4 data points and then upcoming data point as a sample. This way, each sample is about 50 seconds of measurement window.</li>
+                            <li>This way, we get 1976 samples out of 152 scent emission cycles.</li>
+                            <li>Each window takes about 1.5s to compute for features, hence makes it feasible for real time prediction of the scent.</li>
+                            <li>We retain 324 features out of the original 783.</li>
+                            <li>Using the same neural network architecture as before, we achieve 79.8% accuracy on the test set, up from 70% when using manual and no feature extraction, but down from 84% from taking the entire measurement cycle as a window.</li>
+                            
+                            <div class="research-img">
+                                <img src="assets/img/research/figure17.png" class="img-fluid" alt="Figure 17">
+                            </div>
+
+                            <li>Calculating the feature relevance as before, we retain 32 features that are relevant to the classification of all scents, which was not the case with the open environment without sliding window (it retained 0)</li>
+                            <li>Training on the 32 features that are relevant to the classification of all scents, we once again get 78.54% accuracy on the test set.</li>
+                            <li>Excluding air from the dataset we get 76.12% accuracy.</li>
+
+                            <div class="research-img">
+                                <img src="assets/img/research/figure18.png" class="img-fluid" alt="Figure 18">
+                            </div>
+                        </ul>
+
+                        <span class="fs-4 fw-bold">Mixed Sliding Window</span>
+                        <ul>
+                            <li>We mix the container and open air samples, and use 7 heater profile cycles as a sample. We obtain 783 features with 8240 samples.</li>
+                            <li>We first train the NN without feature selection, achieving highest 91.2% accuracy on the test set, beating 81% accuracy on the same dataset with sliding window of 7 without feature extraction.</li>
+                            <li>We obtain 90.96% accuracy 488 selected features.</li>
+                            <li>Further filtering features to only 266, we obtain accuracy of 92.9%.</li>
+
+                            <div class="img-flex">
+                                <div class="research-img">
+                                    <img src="assets/img/research/figure19.png" class="img-fluid" alt="Figure 19">
+                                    <p class="text-center">Confusion matrix when training using all 783 features</p>
+                                </div>
+
+                                <div class="research-img">
+                                    <img src="assets/img/research/figure20.png" class="img-fluid" alt="Figure 20">
+                                    <p class="text-center">Confusion matrix when training using 488 features</p>
+                                </div>
+
+                                <div class="research-img">
+                                    <img src="assets/img/research/figure21.png" class="img-fluid" alt="Figure 21">
+                                    <p class="text-center">Test accuracy over 266 features</p>
+                                </div>
+
+                                <div class="research-img">
+                                    <img src="assets/img/research/figure22.png" class="img-fluid" alt="Figure 22">
+                                    <p class="text-center">Confusion matrix for 266 features</p>
+                                </div>
+                            </div>
+                        </ul>   
+                    </ul>
+                <div class="h4 fs-1 text-black font-alt page-subheading">Technology Review<hr></div>
+                
+                <span class="fs-4 fw-bold">Hardware</span><br>1
+                During initial testing, we chose the ESP32 microcontroller. Due to its light-weight system, WiFi connectivity and simple GPIO control, it was ideal
+                for our initial testing. 
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
+                    <a href="#!">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">FAQ</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

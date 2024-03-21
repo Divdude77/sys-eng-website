@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>OWidgets</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand fw-bold" href="/">
+                    <img src="assets/img/ow-logo.svg" height="30" class="d-inline-block align-top" alt="">
+                    OWidgets
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="requirements.html">Requirements</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="research.html">Research</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="hci.html">HCI</a></li>
+                        <li class="nav-item active"><a class="nav-link me-lg-3" href="design.html">Design</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="implementation.html">Implementation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="testing.html">Testing</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="evaluation.html">Evaluation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="appendix.html">Appendix</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="page-header">
+            <aside class="text-center bg-gradient-primary-to-secondary">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="h2 fs-1 text-white font-alt mb-4">System Design</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="container px-5 page-content mb-4">
+            <div class="row gx-5 justify-content-center mb-4">
+                <div class="h4 fs-1 text-black font-alt page-subheading">System Architecture<hr></div>
+                <div class="fs-5 text-black">
+                    <div class="img-flex">
+                        <div class="research-img">
+                            <img src="assets/img/design/sys-arch-1.png" class="img-fluid" alt="System Architecture">
+                            <p class="text-center">Macro Structure</p>
+                        </div>
+
+                        <div class="research-img">
+                            <img src="assets/img/design/sys-arch-2.png" class="img-fluid" alt="System Architecture">
+                            <p class="text-center">Data Synthesizer Structure</p>
+                        </div>
+                    </div>
+
+                    The above images show the architecture of our system. The first image shows the macro structure of the system. It is based on a Flask server that runs locally on the Raspberry Pi, allowing remote access from anywhere on the local network. The second image shows the data synthesizer structure. It is based on a Python script that also runs on the Raspberry Pi and is responsible for synthesizing the data from the sensors and olfactometer and sending it to the server.<br>
+                    <br>
+                    <span class="fs-4 fw-bold">Web Application Structure</span><br>
+                    Our web application is structured in the following manner:
+                    <div class="research-img">
+                        <img src="assets/img/design/web-structure.png" class="img-fluid" alt="Web Architecture">
+                        <p class="text-center">Web Application Architecture</p>
+                    </div>
+                    The shown APIs allow easy communication between the client and the Data Synthesizer as both are simultaneously running on the Raspberry Pi. <br><br>
+
+                    <span class="fs-4 fw-bold">Database</span><br>
+                    Our application has a CSV database that stores all the uniquely identified scents for later use and quick identification. 
+                    Each row in the CSV file is a record of a scent in this format: <code>id|name|csv,csv,csv</code><br><br>
+
+                    <span class="fs-4 fw-bold">Data Synthesizer</span><br>
+                    The output of the data synthesizer is stored in two seperate folders: <code>raw</code> and <code>features</code>.
+                    The raw folder contains the raw data from the sensors and olfactometer, while the features folder contains the processed data. The data is stored in CSV format for easy access and manipulation. <br>
+                    The CSV files in the raw folder are contain the following fields: <code>DataPoint|Time(s)|ScentNum|Stabilizing|ChanOn|ScentDuration(s)|Temp(C)|Pressure(hPa)|Humidity(%)|HeaterIdx|HeaterTemp(C)|HeaterDur(ms)|Resistance(Ohm)</code>,
+                    while the CSV files in the features folder contain a plethora of fields including the mean, median, mode, standard deviation, and other statistical measures of the raw data. <br><br>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
+                    <a href="#!">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">FAQ</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>

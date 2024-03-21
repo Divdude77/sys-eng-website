@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>OWidgets</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand fw-bold" href="/">
+                    <img src="assets/img/ow-logo.svg" height="30" class="d-inline-block align-top" alt="">
+                    OWidgets
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="requirements.html">Requirements</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="research.html">Research</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="hci.html">HCI</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="design.html">Design</a></li>
+                        <li class="nav-item active"><a class="nav-link me-lg-3" href="implementation.html">Implementation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="testing.html">Testing</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="evaluation.html">Evaluation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="appendix.html">Appendix</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="page-header">
+            <aside class="text-center bg-gradient-primary-to-secondary">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="h2 fs-1 text-white font-alt mb-4">Implementation</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="container px-5 page-content mb-4">
+            <div class="row gx-5 justify-content-center mb-4">
+                <div class="h4 fs-1 text-black font-alt page-subheading">Tools and Dependancies<hr></div>
+                
+                <div class="fs-5 text-black">
+                    <div class="impl-card-container">
+                        <div class="impl-card">
+                            <div style="flex: 3">
+                                <span class="fs-4 fw-bold">BME680</span><br>
+                                The BME680 is the center of the project. It is a 4-in-1 sensor that measures temperature, humidity, pressure, and gas. We use the values read by the sensor to uniquely identify the scents.
+                            </div>
+                            <div style="flex: 1">
+                                <img src="assets/img/home-page-sensor.png" alt="BME680" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="impl-card">
+                            <div style="flex: 3">
+                                <span class="fs-5 fw-bold">Olfactometer</span><br>
+                                OWidgets' olfactometer is a custom-built device that is used to deliver the scents to the user. Providing short-duration scent stimuli, each of its 6 channels can be electronically activated - carrying a range of scents through an easily cleanable and replaceable cartridge.
+                            </div>
+                            <div style="flex: 1">
+                                <img src="assets/img/home-page-olfac.png" alt="Olfactometer" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="impl-card">
+                            <div style="flex: 3">
+                                <span class="fs-5 fw-bold">Raspberry PI</span><br>
+                                The Raspberry PI microcontroller is used to control everything in the system, from the Olfactometer to the BME680 sensor, and also to run the web server which hosts the interface to access the system. 
+                            </div>
+                            <div style="flex: 1">
+                                <img src="assets/img/implementation/rpi.svg" alt="Raspberry PI" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="impl-card">
+                            <div style="flex: 3">
+                                <span class="fs-5 fw-bold">Python</span><br>
+                                Python is the main programming language used in the project. It is used to control the hardware and to run the web server, on the raspberry pi.
+                            </div>
+                            <div style="flex: 1">
+                                <img src="assets/img/implementation/python.png" alt="Python" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="impl-card">
+                            <div style="flex: 3">
+                                <span class="fs-5 fw-bold">Flask</span><br>
+                                Flask is a micro web framework written in Python. It is used to host the web server that provides the interface to access the system.
+                            </div>
+                            <div style="flex: 1">
+                                <img src="assets/img/implementation/flask.png" alt="Flask" class="img-fluid">
+                            </div>
+                        </div>
+
+                        <div class="impl-card">
+                            <div style="flex: 3">
+                                <span class="fs-5 fw-bold">TsFresh</span><br>
+                                TsFresh is a python library that is used to extract features from time series data. We use it to extract features from the sensor data.
+                            </div>
+                            <div style="flex: 1">
+                                <img src="assets/img/implementation/tsfresh.png" alt="TsFresh" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
+                    <a href="#!">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">FAQ</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
