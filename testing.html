@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>OWidgets</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand fw-bold" href="/">
+                    <img src="assets/img/ow-logo.svg" height="30" class="d-inline-block align-top" alt="">
+                    OWidgets
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="requirements.html">Requirements</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="research.html">Research</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="hci.html">HCI</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="design.html">Design</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="implementation.html">Implementation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="testing.html">Testing</a></li>
+                        <li class="nav-item active"><a class="nav-link me-lg-3" href="evaluation.html">Evaluation</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="appendix.html">Appendix</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="page-header">
+            <aside class="text-center bg-gradient-primary-to-secondary">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="h2 fs-1 text-white font-alt mb-4">Testing</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <div class="container px-5 page-content mb-4">
+            <div class="row gx-5 justify-content-center mb-4">
+                <div class="h4 fs-1 text-black font-alt page-subheading">Testing Strategy<hr></div>
+                <div class="fs-5 text-black">
+                    Our project was largely research-based, and thus the major parts of our code could not be tested with unit testing. This includes all our code in creating, training and using machine learning (ML) models for scent identification, as well as code involving responses from the hardware (i.e. the olfactometer and sensor).<br><br>
+
+                    For the ML part of our project, we manually tested each of our models until we got a fairly accurate one. For each model we built, we compared the input data, which contained the IDs of the scent in each emission, with the output of our model, to see if there was any large discrepancy in the classification results. We also regularly updated our client, discussing the results to see if the error was potentially a result of our model-building code, or a poor dataset. To resolve these issues, we tested various heater profiles, changing the heater temperature and heating duration, to find a profile which would give us the best dataset for training a model. Since our final model was not 100% accurate, small discrepancies in the model's classification and the actual scent used for the input data for any identification run would be expected.<br><br>
+
+                    To test the hardware, we manually tested the software, observing if the functionalities resulted in the correct response from the olfactometer and sensor. In the case of the olfactometer, we would observe if the scent emission occurred at the correct time, for the correct duration, and using the correct channel. For the sensor, we printed out the readings on the terminal to check if they were being read at the correct intervals, and whether the readings were within the expected range. When the responses differed from what we expected, we would then look through the code to find the error and debug it. <br><br>
+                </div>
+
+                <div class="h4 fs-1 text-black font-alt page-subheading">User Acceptance Testing<hr></div>
+                <div class="fs-5 text-black">
+                    <table>
+                        <tr>
+                            <th>Test case</th>
+                            <th>Result</th>
+                            <th>Feedback</th>
+                        </tr>
+                        <tr>
+                            <td>Creating new olfactometer / sensor schedule</td>
+                            <td>Pass</td>
+                            <td>Intuitive design and works as expected.</td>
+                        </tr>
+                        <tr>
+                            <td>Creating new scent</td>
+                            <td>Pass</td>
+                            <td>Scent is added but the page needs to be reloaded to use the new scent. Would be good if it could immediately be added to the dropdown fields.</td>
+                        </tr>
+                        <tr>
+                            <td>Invalid input on olfactometer / sensor configuration page when creating / editing file</td>
+                            <td>Pass</td>
+                            <td>Helpful that the interface does not allow the user to submit incorrect inputs.</td>
+                        </tr>
+                        <tr>
+                            <td>Setting configuration for olfactometer / sensor</td>
+                            <td>Pass</td>
+                            <td>Configuration is set correctly and confirmation is given.</td>
+                        </tr>
+                        <tr>
+                            <td>View selected configuration file</td>
+                            <td>Pass</td>
+                            <td>Displays correct information.</td>
+                        </tr>
+                        <tr>
+                            <td>Renaming existing configuration file</td>
+                            <td>Pass</td>
+                            <td>File is renamed successfully.</td>
+                        </tr>
+                        <tr>
+                            <td>Editing existing configuration file</td>
+                            <td>Pass</td>
+                            <td>File can be edited easily through the UI.</td>
+                        </tr>
+                        <tr>
+                            <td>Starting data collection cycle</td>
+                            <td>Pass</td>
+                            <td>Nice that the configuration is displayed in the confirmation popup. Data collection works as expected.</td>
+                        </tr>
+                        <tr>
+                            <td>Viewing live data</td>
+                            <td>Pass</td>
+                            <td>Live data from sensor set-up is plotted on the graph and correct values are plotted based on data type selected.</td>
+                        </tr>
+                        <tr>
+                            <td>Stopping data collection cycle</td>
+                            <td>Pass</td>
+                            <td>Data collection is stopped as expected.</td>
+                        </tr>
+                        <tr>
+                            <td>Adding training to existing model</td>
+                            <td>Pass</td>
+                            <td>Good that there is an "easy" mode and an "advanced" mode. Advanced mode is intuitive to use for entering configurations for training. It is also good that the user is prevented from entering wrong inputs.</td>
+                        </tr>
+                        <tr>
+                            <td>Viewing model information</td>
+                            <td>Pass</td>
+                            <td>Correct information displayed.</td>
+                        </tr>
+                        <tr>
+                            <td>Viewing training results</td>
+                            <td>Pass</td>
+                            <td>Easy to zoom in and out of graphs to view training results.</td>
+                        </tr>
+                        <tr>
+                            <td>Running identification</td>
+                            <td>Pass</td>
+                            <td>File selection works correctly and displays a list of files based on the date range selected. Identification with the trained model was mostly accurate. The few scent emissions that were misidentified are to be expected.</td>
+                        </tr>
+                        <tr>
+                            <td>Viewing identification history</td>
+                            <td>Pass</td>
+                            <td>Newest identification was correctly added into the history page. Search bar works as well.</td>
+                        </tr>
+                        <tr>
+                            <td>Viewing scent database</td>
+                            <td>Pass</td>
+                            <td>New scents are added correctly and can be viewed. Search bar works correctly.</td>
+                        </tr>
+                    </table>                      
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
+                    <a href="#!">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">FAQ</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
