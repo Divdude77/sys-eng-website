@@ -573,11 +573,7 @@
                 <div class="h4 fs-1 text-black font-alt page-subheading">Web Server Implementation<hr></div>
 
                 <div class="fs-5 text-black">
-                  
                     Our project's primary user interface is deployed via a Flask server. To initiate the website, we execute the app.py script. Within app.py, various routes are defined as functions. These routes serve as endpoints that are invoked when a client attempts to access a specific URL. These routes can function not only to render web pages but also to serve as APIs, enabling interaction with the server through HTTP requests.<br><br>
-
-                </div>
-                    Our project's primary user interface is deployed via a Flask server. To initiate the website, we execute the app.py script. Within app.py, various routes are defined as functions. These routes serve as endpoints that are invoked when a client attempts to access a specific URL. These routes can function not only to render web pages but also to serve as APIs, enabling interaction with the server through HTTP requests.
                     
                     <div class="fs-4 text-black fw-bold">Config Page</div>
                     Both the sensor configuration (<code>/config-sensor</code>) and olfactometer configuration (<code>/config-olfac</code>) pages are rendered using the same template. The template is populated with the appropriate form fields based on the configuration type. The form fields are pre-filled with the current configuration values, allowing the user to modify them as needed. Upon submission, the form data is sent to the server, which then updates the configuration files accordingly. This submission is performed by the submitForm function, which sends a POST request to the server at <code>/submit-data</code> with the form data. The <code>formType</code> variable specifies the type of configuration being submitted, and whether the file is being selected or changed. Then on the backend, the server receives the form data and updates the configuration files accordingly.
