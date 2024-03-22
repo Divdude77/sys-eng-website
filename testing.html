@@ -36,8 +36,8 @@
                         <li class="nav-item"><a class="nav-link me-lg-3" href="hci.html">HCI</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="design.html">Design</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="implementation.html">Implementation</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="testing.html">Testing</a></li>
-                        <li class="nav-item active"><a class="nav-link me-lg-3" href="evaluation.html">Evaluation</a></li>
+                        <li class="nav-item active"><a class="nav-link me-lg-3" href="testing.html">Testing</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="evaluation.html">Evaluation</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="appendix.html">Appendix</a></li>
                     </ul>
                 </div>
@@ -60,13 +60,54 @@
                 <div class="fs-5 text-black">
                     Our project was largely research-based, and thus the major parts of our code could not be tested with unit testing. This includes all our code in creating, training and using machine learning (ML) models for scent identification, as well as code involving responses from the hardware (i.e. the olfactometer and sensor).<br><br>
 
-                    For the ML part of our project, we manually tested each of our models until we got a fairly accurate one. For each model we built, we compared the input data, which contained the IDs of the scent in each emission, with the output of our model, to see if there was any large discrepancy in the classification results. We also regularly updated our client, discussing the results to see if the error was potentially a result of our model-building code, or a poor dataset. To resolve these issues, we tested various heater profiles, changing the heater temperature and heating duration, to find a profile which would give us the best dataset for training a model. Since our final model was not 100% accurate, small discrepancies in the model's classification and the actual scent used for the input data for any identification run would be expected.<br><br>
+                    <span class="fs-4 fw-bold">Machine learning testing</span><br>
+                    For the ML part of our project, we first wrote the model training and identification code in a Jupyter notebook. To test the functionalities, we tested each individual function in the Jupyter notebook with various input datasets, and observed whether it produced the expected result. For each model we built, we compared the output of our model with the input data, which contained the IDs of the scent in each emission. If there was any large discrepancy in the classification results produced by our model, we would check through our code to see if the error was in our code, or if it could have been a result of poor input data resulting in an inaccurate model.<br><br>
 
-                    To test the hardware, we manually tested the software, observing if the functionalities resulted in the correct response from the olfactometer and sensor. In the case of the olfactometer, we would observe if the scent emission occurred at the correct time, for the correct duration, and using the correct channel. For the sensor, we printed out the readings on the terminal to check if they were being read at the correct intervals, and whether the readings were within the expected range. When the responses differed from what we expected, we would then look through the code to find the error and debug it. <br><br>
+                    To resolve issues caused by poor input data, we tested various heater profiles, changing the heater temperature and heating duration, to find a profile which would give us the best dataset for training a model. Since our final model was not 100% accurate, small discrepancies in the model's classification and the actual scent used for the input data for any identification run are to be expected.<br><br>
+
+                    <span class="fs-4 fw-bold">Hardware testing</span><br>
+                    To test the hardware, we manually tested the software for controlling the hardware, observing if the functionalities resulted in the correct response from the olfactometer and sensor. In the case of the olfactometer, we would observe if the scent emission occurred at the correct time, for the correct duration, and using the correct channel. For the sensor, we printed out the readings on the terminal to check if they were being read at the correct intervals, and whether the readings were within the expected range. When the responses differed from what we expected, we would then look through the code to find the error and debug it.<br><br>
+
+                    We also tested the data collection system by manually checking that all the data printed out on the terminal during the collection cycle is also stored accurately in order and in the correct format in each CSV file. We also checked that the CSV files had the correct date and time stamps for each collection cycle.<br><br>
+
+                    A major issue we encountered with the sensor was that repeated use over long periods of time with no rest periods, or use at high heater temperatures, would cause the sensor to become damaged and burn out. This meant that the sensor would give abnormally high resistance readings. We manually monitored the readings to observe if the resistance readings started trending upwards over time without any scent emissions. Then, we tried out various heater profiles in order to find one that would not damage the sensor while still providing us with suitable data for ML. In the process, we burnt out 3 sensors, until we settled on the heater profile we eventually used.<br><br>
+
+                </div>
+
+                <div class="h4 fs-1 text-black font-alt page-subheading">Unit and Integration Testing<hr></div>
+                <div class="fs-5 text-black">
+                    <span class="fs-4 fw-bold">Unit testing</span><br>
+                    We tested the database handler system using unit testing. We wrote the unit tests in Python, using the unittest module to create the testing framework. We tested each of the following functionalities of the databases under different conditions to ensure that they were giving the expected output:<br><br>
+
+                    <ul>
+                        <li>Reading from database file</li>
+                        <li>Writing data into database file</li>
+                        <li>Searching for records by specific fields</li>
+                        <li>Adding new record</li>
+                        <li>Deleting a record</li>
+                    </ul><br>
+                    This included testing edge cases such as trying to search for or edit non-existent records, and invalid inputs.
+
+                    <br><br>
+                    As seen below, we had a total of 47 unit tests for the database system, and all tests passed.<br><br>
+                      
+                    <img src="assets/img/testing/unit-testing-db.png" class="img-fluid" alt="Unit testing result">
+                    <br><br>
+
+                    <span class="fs-4 fw-bold">Integration testing</span><br>
+                    We tested the integration of our user interface (UI) with the hardware by running through various use cases using our UI. We ran through each feature of our UI to test that it gave the expected response from the hardware. This included checking that the olfactometer and sensor ran as expected when we started and stopped data collection from the UI:<br>
+                    <ul>
+                        <li>Olfactometer started and stopped each emission according to the schedule set from the UI</li>
+                        <li>Sensor readings were taken according to the heater profile set from the UI</li>
+                        <li>Olfactometer and sensor both started and stopped emissions and cycles respectively when we pressed the start / stop button on the UI</li>
+                      </ul>
+                      
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">User Acceptance Testing<hr></div>
                 <div class="fs-5 text-black">
+                    We carried out user acceptance testing for the interface and ML parts of the project. Our users are the engineers in the company. Thus, we met with our supervisor Richard, a hardware engineer, and had him test out our software as a user. This table below shows the test cases we ran through, the results, and the feedback Richard gave us for each case:
+                    <br><br>
                     <table>
                         <tr>
                             <th>Test case</th>
