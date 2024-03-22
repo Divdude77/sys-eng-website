@@ -11334,6 +11334,11 @@ table, th, td {
   align-items: center;
 }
 
+code {
+  background-color: #e4e4e4;
+  padding: 2px;
+  border-radius: 5px;
+}
 
 @keyframes hover {
   0% {
