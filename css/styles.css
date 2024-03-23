@@ -11245,8 +11245,12 @@ footer a:hover, footer a:active, footer a:focus {
   font-family: var(--bs-body-font-family);
 }
 
-.page-content li {
+.page-content ul li {
   list-style-type: '-  ';
+}
+
+.page-content li {
+  margin-block: 0.5rem;
 }
 
 .page-carousel {
