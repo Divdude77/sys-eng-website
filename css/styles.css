@@ -10949,7 +10949,6 @@ section {
 
 section.cta {
   position: relative;
-  padding: 15rem 0;
   background-image: url("https://source.unsplash.com/5g41N3uRPf8/1500x800");
   background-position: center;
   background-size: cover;
@@ -11342,6 +11341,43 @@ code {
   background-color: #e4e4e4;
   padding: 2px;
   border-radius: 5px;
+}
+
+.team-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.team-card {
+  text-align: center;
+  width: 30%;
+  border-radius: 10px;
+  padding: 15px;
+  background: white;
+  display: flex;
+  row-gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-card-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.team-card-text {
+  margin: 0;
+}
+
+.team-card-icons {
+  font-size: 2em;
+}
+
+.team-card-icons a {
+  color: black;
 }
 
 @keyframes hover {
