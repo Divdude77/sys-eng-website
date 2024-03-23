@@ -58,37 +58,74 @@
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">System Architecture<hr></div>
                 <div class="fs-5 text-black">
-                    <div class="img-flex">
-                        <div class="research-img">
-                            <img src="assets/img/design/sys-arch-1.png" class="img-fluid" alt="System Architecture">
-                            <p class="text-center">Macro Structure</p>
-                        </div>
+                    <!-- REPLACE THIS W OVERALL SYS STRUCTURE -->
+                    <img src="assets/img/design/overall-structure.png" class="img-fluid" alt="Web Architecture"><br><br>
+                    
+                    The above diagram shows the overall system architecture of our project. The user interface, run from the <code>app.py</code> file, consists of 7 main pages which access the functionalities of the following major classes, modules and files on the back-end:<br>
+                    <ul>
+                        <li>Data collection system: 
+                            <code>DataSynthesizer</code>, <code>Ow06</code> and <code>SensorLoggr</code>
+                        </li>
+                        <li>Machine learning system:
+                            <code>ModelPage</code>, <code>FeatureExtractor</code> and <code>ModelTrainer</code>
+                        </li>
+                        <li>Databases:
+                            <code>ScentDBHandler</code>, <code>ModelDBHandler</code> and <code>IdentifiedDBHandler</code>
+                        </li>
+                        <li>Configuration and output data files</li>
+                    </ul>
 
-                        <div class="research-img">
-                            <img src="assets/img/design/sys-arch-2.png" class="img-fluid" alt="System Architecture">
-                            <p class="text-center">Data Synthesizer Structure</p>
-                        </div>
-                    </div>
+                    The modules in grey are key dependencies that are not written by our team.<br><br>
 
-                    The above images show the architecture of our system. The first image shows the macro structure of the system. It is based on a Flask server that runs locally on the Raspberry Pi, allowing remote access from anywhere on the local network. The second image shows the data synthesizer structure. It is based on a Python script that also runs on the Raspberry Pi and is responsible for synthesizing the data from the sensors and olfactometer and sending it to the server.<br>
+                    <span class="fs-4 fw-bold">Data collection system</span><br>
+                    <code>DataSynthesizer</code> is the main class which handles the automated data collection system. It makes use of the <code>Ow06</code> class, which controls the olfactometer and was provided to us by OWidgets, and the <code>SensorLogger</code> class, which controls the BME680 sensor.<br><br>
+
+                    The output of the data synthesizer is stored in two seperate folders: <code>raw</code> and <code>features</code>. The <code>raw</code> folder contains the raw data from the sensors and olfactometer, while the <code>features</code> folder contains the processed data. The data is stored in CSV format for easy access and manipulation.<br><br>
+
+                    The CSV files in the <code>raw</code> folder store the raw readings and data from the sensor and olfactometer recorded during data collection. They contain the following fields: <code>DataPoint|Time(s)|ScentNum|Stabilizing|ChanOn|ScentDuration(s)|Temp(C)|Pressure(hPa)|Humidity(%)|HeaterIndex|HeaterTemp(C)|HeaterDur(ms)|Resistance(Ohm)</code>.<br><br>
+                    
+                    The CSV files in the <code>features</code> folder contain fields including the mean, median, mode, standard deviation, and other statistical measures of the raw data. They are generated in between data collection cycles, while the sensor stabilises.<br><br>
+
+                    <span class="fs-4 fw-bold">Machine learning system</span><br>
+
+                    The machine learning system is made up of three modules: <code>ModelPage</code>, <code>FeatureExtractor</code> and <code>ModelTrainer</code>.<br><br>
+
+                    <code>FeatureExtractor</code> handles the extraction of features from the raw data collected by the data collection system. It is used for automatic feature extraction during data collection, and for processing data during the training process.<br><br>
+
+                    <code>ModelTrainer</code> handles the training of the model using the extracted features. It uses the extracted features to train the model, and then saves the model to a file for later use.<br><br>
+
+                    <code>ModelPage</code> is a wrapper class which uses functions from both the <code>FeatureExtractor</code> and <code>ModelTrainer</code> classes to extract features and train the model. It also handles identification from a given file. This class neatly packages the functions from the other two classes into 9 steps to train a model, beginning at feature extraction and ending at saving the model:<br>
+                    <ol>
+                        <li>Load raw features</li>
+                        <li>Manually select features</li>
+                        <li>Pre-process data</li>
+                        <li>Set block configuration</li>
+                        <li>Construct model</li>
+                        <li>Prepare training</li>
+                        <li>Train model</li>
+                        <li>Plot metrics</li>
+                        <li>Save model</li>
+                    </ol>
                     <br>
+
+                    <span class="fs-4 fw-bold">Databases</span><br>
+                    The databases are all stored in CSV files. They are read with database handler classes, which each handle the individual formats for the databases. Each database handler class inherits from the abstract parent class <code>DatabaseHandler</code>. The storage formats for each database, and how they are handled by the individual classes, can be found in the <a href="implementation.html">Implementation</a> page.<br><br>
+                    
                     <span class="fs-4 fw-bold">Web Application Structure</span><br>
-                    Our web application is structured in the following manner:
-                    <div class="research-img">
-                        <img src="assets/img/design/web-structure.png" class="img-fluid" alt="Web Architecture">
-                        <p class="text-center">Web Application Architecture</p>
-                    </div>
-                    The shown APIs allow easy communication between the client and the Data Synthesizer as both are simultaneously running on the Raspberry Pi. <br><br>
+                    Our full web application structure is as shown:<br>
+                    <ul>
+                        <li>Green boxes: Main web pages</li>
+                        <li>Blue boxes: Web applications involving <code>ModelPage</code></li>
+                        <li>Orange boxes: Database handler classes</li>
+                        <li>Purple boxes: Miscellaneous helper functions</li>
+                    </ul>
+                    
+                    <img src="assets/img/design/web-app-design.png" class="img-fluid" alt="Web Architecture"><br><br>
 
-                    <span class="fs-4 fw-bold">Database</span><br>
-                    Our application has a CSV database that stores all the uniquely identified scents for later use and quick identification. 
-                    Each row in the CSV file is a record of a scent in this format: <code>id|name|csv,csv,csv</code><br><br>
+                    Each of the pages on the web application have a function which the URL is routed to, which displays the respective pages. Each functionality on the UI which requires a response from the server has each own route and function which accesses the other back-end functionality and files where required. These functions are called via AJAX requests from the front-end.<br><br>
 
-                    <span class="fs-4 fw-bold">Data Synthesizer</span><br>
-                    The output of the data synthesizer is stored in two seperate folders: <code>raw</code> and <code>features</code>.
-                    The raw folder contains the raw data from the sensors and olfactometer, while the features folder contains the processed data. The data is stored in CSV format for easy access and manipulation. <br>
-                    The CSV files in the raw folder are contain the following fields: <code>DataPoint|Time(s)|ScentNum|Stabilizing|ChanOn|ScentDuration(s)|Temp(C)|Pressure(hPa)|Humidity(%)|HeaterIdx|HeaterTemp(C)|HeaterDur(ms)|Resistance(Ohm)</code>,
-                    while the CSV files in the features folder contain a plethora of fields including the mean, median, mode, standard deviation, and other statistical measures of the raw data. <br><br>
+                    Since the web server is running concurrently with the data collection system on the Raspberry Pi, it allows easy access to controlling the hardware, accessing the databases and using the machine learning models.<br><br>
+                   
                 </div>
             </div>
         </div>
