@@ -58,9 +58,32 @@
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">Project Background<hr></div>
                 <div class="fs-5 text-black">
-                    OWidgets is a visionary company dedicated to revolutionizing sensory experiences through their groundbreaking innovations. At the forefront of their offerings is the Olfactometer, a cutting-edge device designed to emit scents with unparalleled precision and control. OWidgets' team of researchers, engineers, and multi-disciplinary scientists are committed to unlocking the full potential of the Olfactometer across a diverse array of applications, spanning research, healthcare, and immersive reality experiences.
+                    OWidgets Smell Digital is a pioneering enterprise promising to advance the field of sensor technology. Their olfactometer offer a significant leap forward in delivering tailored olfactory experiences. 
                     <br><br>
-                    Our collaborative project with OWidgets introduces an innovative olfactometer integrated with the BME680 sensor, enabling a breakthrough in olfactory sensing. The olfactometer, developed by OWidgets, emits diverse scents, while the BME680 sensor captures real-time data on temperature, humidity, pressure, and gas composition. Then, leveraging machine learning, we will facilitate precise scent identification. This novel system finds applications in fragrance design, healthcare, and environmental monitoring, promising advancements in quality control, early disease detection, and air quality assessment. By merging hardware and software expertise, our project showcases a transformative approach to olfactory analysis, opening new possibilities for industries and applications reliant on accurate scent identification.
+                    Our joint project with OWidgets Smell Digital aims to leverage the versatile and low cost metal oxide (MOX) sensor from Bosch to automise the process for data synthesis, feature extraction, training, and deployment by offering a streamlined package that lays the foundational work for quantifying and analysing unique scent experiences that is suited for our client’s various pursuits in fragrance design, healthcare, environmental monitoring, and immersive VR experiences. 
+                    <br><br>
+                    <div class="d-flex">
+                        <div>
+                            <span class="fs-4 fw-bold">Challenges</span>
+                            <ul>
+                                <li>Lack a standardised system to quantify scents present in the environment.</li><br>
+                                <li>Current methods to identify chemical compounds rely on laboriously hand crafted features.</li>
+                                <li>Once developed, the use cases are often narrow, lacking a general process to synthesise features to analyse a wide variety of compounds.</li>
+                                <li>MOX sensors have poor selectivity.</li>
+                                <li>MOS are prone to poisoning and drift over time, requiring frequent recalibration.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="fs-4 fw-bold">Our Solution</span>
+                            <ul>
+                                <li>A data collection system which is easily customisable using OWidget's olfactometer and can be accessed remotely.</li>
+                                <li>Automatize feature extraction for all use cases which can be cross analysed later with convenience.</li>
+                                <li>Utilise machine learning for one click training for a scent classification algorithm tailored specifically for the use case.</li>
+                                <li>Scent database which serves as a digital library of scents for analysis at a later date.</li>
+                                <li>All functionalities can be accessed through an user friendly UI that streamlines the entire process.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -83,13 +106,20 @@
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">Project Goal<hr></div>
                 <div class="fs-5 text-black">
-                    The goal of our project is to create a seamless and intuitive system that merges the capabilities of the olfactometer with the BME680 sensor, facilitating real-time scent identification through the application of machine learning techniques. Central to this endeavor is the development of a comprehensive scents database, enabling efficient storage and retrieval of scent data for analysis and reference. Additionally, the system will feature a user-friendly interface, providing control over the olfactometer and offering real-time visualization of data. To achieve optimal results, we will explore and experiment with various machine learning approaches, ensuring that the chosen methodology aligns with the project's objectives and maximizes the system's effectiveness.
+                    Our project aims to develop a data synthesis system that leverages the customisability of scent combination offered by OWidget's proprietary olfactometer and the versatility of Bosch's BME680 metal oxide sensor for environment monitoring, to offer a standardised and automised data synthesis process that is suited for the analysis for any compound present in the environment.
+                    <br><br>
+                    The collected data will be stored in a scent database to facilitate further analysis for quality control and research purposes.
+                    <br><br>
+                    We aim to offer a machine learning algorithm which can be trained for classification tasks involving any combination of scents from their features in the scent database, which is lightweight and can be deployed on less capable devices. The algorithm approximates the necessary size of the network depending on the number of input features, aiming to balance model size and accuracy.
+                    <br><br>
+                    All functionalities will be able to be accessed from a webpage UI, which allows remote access to the system, while equally maintaining ease-of-use and customisability by offering both one-click options and advanced configurations depending on the user's needs.
                 </div>
             </div>
 
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">User Interviews<hr></div>
                 <div class="fs-5 text-black">
+                    We then conducted semi-structured interviews with the user, to capture the requirements by allowing the user to elaborate their holistic needs in detail, and probe for technical requirements where necessary.<br><br>
                     <span class="requirements-q">Q: What is your background/experience?</span>
                     <ul>
                         <li>Worked with a startup company developing environmental sensors specifically for gas detection - optical sensing (optical absoption due to gas absorption) and detection using metal oxides.</li>
@@ -112,11 +142,11 @@
                     <ul>
                         <li>Useful diagnostic tool for understanding what is coming out of system (odours can age over time, useful to understanding this process). Can help see if odour cartridge needs replacing or if characteristics are changing.</li>
                         <li>Can be used to detect odours in background, apart from the one emitted from device - useful in places with a lot of background contamination.</li>
-                        <li>Sense what the user is detecting (e.g. place sensor at user's nose → keep track of what odour the user was sensing)</li>
+                        <li>Quantify what the user is perceiving, as it can be subjective.</li>
                     </ul>
                     <br>
 
-                    <span class="requirements-q">Q: What kind of features of the platform will help you do your work easier?</span>
+                    <span class="requirements-q">Q: What are some requirements (hardware and software) that would help you achieve this?</span>
                     <ul>
                         <li>Interface for configuring sensor (setting parameters like temperature ramp, timing, repetition rate for sampling).</li>
                         <li>Extracting data from sensor.</li>
@@ -145,7 +175,7 @@
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">Personas<hr></div>
                 <div class="fs-5 text-black">
-                    After conducting interviews, we came up with personas and scenarios for our possible target users to better understand the specific requirements of our project.
+                    Based on our conversation with the target user, we constructed personas to fully understand the requirements of the product that suits our user's goal and needs.
                 </div>
                 <div class="page-carousel">
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -176,6 +206,8 @@
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">Storyboard<hr></div>
                 <div class="fs-5 text-black">
+                    Then, with the storyboards we simulate the user's interaction with the product in a variety of use cases to understand more intricately what features beyond the rudimentary requirements would maximize the chances for a pleasant user experience. 
+                    <br><br>
                     <img src="assets/img/requirements/sb-1.png" class="d-block w-100" alt="Storyboard 1">
                     <img src="assets/img/requirements/sb-2.png" class="d-block w-100" alt="Storyboard 2">
                 </div>
@@ -184,11 +216,11 @@
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">MoSCoW List<hr></div>
                 <div class="fs-5 text-black">
-                    Through all these discussions and interviews, we were able to develop a comprehensive MoSCoW list outlining the project's priorities. This systematic approach ensures that tasks are prioritized effectively, laying a solid foundation for successful project execution.
+                    Finally, based upon our conversation with the user and simulation of the use cases, we develop a comprehensive MoSCoW list outlining the project's functional requirements. This systematic approach ensures that tasks are prioritized effectively, laying a solid foundation for successful project execution.
                     <h3 class="font-alt">Must Have</h3>
                     <ul>
-                        <li>ML system to identify gas based on pattern of change in resistance across different temperatures.</li>
-                        <li>Interface for interacting with olfactometer and reading from sensor.</li>
+                        <li>ML system to identify gas based on pattern of change in resistance across different sensor heater temperatures.</li>
+                        <li>Interface for interacting with olfactometer and reading from sensor, with synchronised starting and stopping for the setup.</li>
                         <li>Data-synthesis system which collects data to establish unique fingerprints for different scents through feature extraction pipeline.</li>
                     </ul>
 
@@ -209,7 +241,10 @@
                     <ul>
                         <li>Other applications such as establishing concentration of chemicals.</li>
                         <li>Automate selection and evaluation of best heater profile for specific applications and more accurate identification.</li>
+                        <li>Hyperparameter search</li>
                     </ul>
+
+                    Some details were changed in the requirements of lesser importance to further enhance the overall functionality, suiting the requirements of higher priority. Overall, the requirements were strictly adhered to to ensure the delivery of the product that best suits our user's needs. Changes were made with mutual agreement with our partner.
                 </div>
             </div>
         </div>
