@@ -58,8 +58,8 @@
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">System Architecture<hr></div>
                 <div class="fs-5 text-black">
-                    <img src="assets/img/design/overall-structure.png" class="img-fluid" alt="Web Architecture"><br><br>
-                    
+                    <img src="assets/img/design/overall-structure.png" class="img-fluid" alt="Overall structure"><br><br>
+                   
                     The above diagram shows the overall system architecture of our project. The user interface, run from the <code>app.py</code> file, consists of 7 main pages which access the functionalities of the following major classes, modules and files on the back-end:<br>
                     <ul>
                         <li>Data collection system: 
@@ -75,6 +75,22 @@
                     </ul>
 
                     The modules in grey are key dependencies that are not written by our team.<br><br>
+
+                    We implemented the Model-View-Controller (MVC) design pattern to organize and manage both the UI and backend functionality. The MVC design involves three componenets:
+                    <ul>
+                        <li>
+                            <strong>Model:</strong> Represents back-end logic and data handling functionalities. In our system, the Model consists of the data collection system, machine learning system, and database handler classes.
+                        </li>
+                        <li>
+                            <strong>View:</strong> Renders the UI elements and displays data to the user. In our system, these are the front-end elements of the system, including the HTML, CSS and JavaScript parts.
+                        </li>
+                        <li>
+                            <strong>Controller:</strong> Acts as an intermediary between the Model and View, handling user input, processing requests, and returning required data. It interacts with the Model components to retrieve or modify data, and updates the View components to reflect changes. This is the Flask web application server in our system, which handles requests from the front-end and interacts with the back-end components.
+                        </li>
+                    </ul>
+                    <br>
+
+                    We chose to use the MVC design pattern as it allows for the separation of concerns by dividing responsibilities between each of the three components. This enables easier maintenance, scalability, and testing of the entire system. It guarantees that any changes made to one component of the MVC architecture would not cause the other two components to break, allowing us and any future developers to safely make changes.<br><br>
 
                     <span class="fs-4 fw-bold">Data collection system</span><br>
                     <code>DataSynthesizer</code> is the main class which handles the automated data collection system. It makes use of the <code>Ow06</code> class, which controls the olfactometer and was provided to us by OWidgets, and the <code>SensorLogger</code> class, which controls the BME680 sensor.<br><br>
@@ -179,14 +195,8 @@
                     </ul>
                     <br>
 
-                    <span class="fs-4 fw-bold">Sketches</span><br>
-                    We designed our UI by meeting with our client and discussing their requirements. We then created the following sketches based on their feedback:<br>
-                    <!-- INSERT SKETCHES HERE -->
-
-                    <br><br>
-                    <span class="fs-4 fw-bold">Interactive prototype</span><br>
-                    We used Figma to build an interactive prototype, which can be found here:
-                    <!-- INSERT LINK TO FIGMA -->
+                    <span class="fs-4 fw-bold">Sketches and prototype</span><br>
+                    We designed our UI by meeting with our client and discussing their requirements. We then created sketches based on their feedback, and built an interactive prototype with Figma. These can be found on the <a href="hci.html">HCI</a> page.
                     <br><br>
                 </div>
             </div>
