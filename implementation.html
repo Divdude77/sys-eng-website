@@ -738,10 +738,10 @@
                     <br>
                 </div>
 
-                <span class="fs-4 fw-bold">Model training page</span>
+                <span class="fs-4 fw-bold">Identification page</span>
 
                 <div class="fs-5 text-black">
-                    On the model page, the user can create a new model by choosing the "Create new" option in the dropdown, an entering the desired name for the new model. They can also choose an existing model from the dropdown list. Each time the user changes the model selected, the server creates a new <code>ModelPage</code> object, from the existing model's path if the user selected an existing one and initialising it without reading from a directory otherwise. The new object is then stored as <code>global_variables.model_page</code>.<br><br>
+                    On the identification page, the user can create a new model by choosing the "Create new" option in the dropdown, an entering the desired name for the new model. They can also choose an existing model from the dropdown list. Each time the user changes the model selected, the server creates a new <code>ModelPage</code> object, from the existing model's path if the user selected an existing one and initialising it without reading from a directory otherwise. The new object is then stored as <code>global_variables.model_page</code>.<br><br>
 
                     When the user clicks the "Create model" button, the name entered by the user is then saved as a global variable <code>global_variables.new_model_name</code> and the global variable <code>global_variables.new_model</code>, which is a boolean, is set to <code>True</code> to indicate that the model being trained does not have an existing directory and a new directory must be created. Once training is complete and the model is saved, the new model is added to the model database with the name stored in <code>global_variables.new_model_name</code>.<br><br>
 
@@ -890,9 +890,11 @@
                     </pre>
                     <br>
 
+                    When training is complete, training results are updated and displayed on the page using an AJAX request to retrieve the results. This includes a classification report, a confusion matrix, and 2 graphs displaying the training loss and training accuracy. These graphs are interative and created with Chart.js; the user can zoom in and out of the graphs to view them in greater detail.<br><br>
+
                     The user can also choose a file to identify by searching by a range of dates. The server sends a similar AJAX request to the server and receives the identification results, which are displayed in a bar chart. <br><br>
                     <!-- TODO: Talk about how the bar chart works -->
-
+                    
                     <span class="fs-4 fw-bold">History page</span><br>
 
                     When the user opens the history page, the Flask application routes the <code>/history</code> URL to run the function <code>history</code> to display the page. The history database is read from the CSV file stored at the path specified in <code>constants.py</code> as <code>HISTORY_DB_PATH</code>. The user can search for records by entering a query in the search bar, selecting a date range, and choosing to search by the CSV name or scent IDs in results. The query is submitted via a GET request to the same URL, which then carries out the relevant search to get the results. If there is no query, the results are simply the entire database (retrieved via the <code>readDB</code> method). The results from the database are passed into the Jinja placeholders in the HTML file, which then dynamically populates the table in the UI with the records from the database (shown below). <br>
@@ -967,12 +969,12 @@
 
                 <div class="fs-5 text-black">
 
-                    We have three main databases. Each database is stored in a CSV file. The details of each database are summarised in this table:<br><br>
+                    We have three main databases. Each database is stored in a CSV file. The paths for these files are configurable and can be set in the <code>constants.py</code> file. The details of each database are summarised in this table:<br><br>
 
                     <table>
                         <tr>
                             <th>Database</th>
-                            <th>CSV Name</th>
+                            <th>Path</th>
                             <th>Python Class</th>
                         </tr>
                         <tr>
@@ -1213,6 +1215,7 @@
                 </div>
 
             </div>
+        </div>
         </div>
 
         <footer class="bg-black text-center py-5">
