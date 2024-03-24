@@ -951,7 +951,18 @@
                     <img src="assets/img/implementation/scentdb-page.png" class="img-fluid" alt="Scent database page"><br>
 
                 </div>
-          
+                
+                <div class="h4 fs-1 text-black font-alt page-subheading">Machine Learning Implementation<hr></div>
+                
+
+                <div class="fs-5 text-black">
+                    <span class="fs-4 fw-bold">Machine Learning Package</span><br>
+                    Using the same machine learning scripts that were used for research and environment testing, we packaged them into 3 distinct classes to offer users a streamlined process accessible from the UI, simplifying the traditionally complex feature extraction and training process to achieve a generally applicable package to identify compounds in the environment. FeatureSelector handles initial feature selection and relevance calculations to allow filtering of features obtained from the raw readings during data collection. ModelTrainer then handles pre-processing, training, and validation. These two classes are instances of the ModelPage class, which is an interface to access the processes either through Jupyter Notebook for testing or the frontend of the UI to package the functionalities into simplified steps. For <code>FeatureSelector</code> and <code>ModelTrainer</code>, their functions return messages containing a list of strings, the relevant information specifying what actions were performed based on the input parameters. This is to give both users and data analysts a clear view of operations at every stage to ensure the expected behavior.
+
+                    <span class="fs-4 fw-bold">Feature Selector</span><br>
+                    It consists of the <code>FeatureSelector</code> class which handles feature selection as well as feature relevance calculations, allowing user a view at the significance of each feature for their particular classification task. This allows users to filter features as they see fit, potentially lowering the compute requirements of the classification task by only retaining relevant features for the task at hand without sacrificing accuracy. 
+                </div>
+
                 <div class="h4 fs-1 text-black font-alt page-subheading">Database Implementation<hr></div>
 
                 <div class="fs-5 text-black">
@@ -985,7 +996,6 @@
                       Each of the three Python classes inherit from a parent class, <code>DatabaseHandler</code>. This is an abstract class which defines the required methods for all the database classes. It also defines the function <code>readDB()</code> which returns the entire database as a 2-dimensional array, when the entire database's records are required by another function. 
                       <br><br>
                 </div>
-                
 
                 <span class="fs-4 fw-bold">Scent Database</span>
 
@@ -1133,6 +1143,7 @@
                         <li><code>updateName</code>: Edits the name of the model and updates the "last updated" date</li>
                     </ul>
                     <br>
+                </div>
 
                 <span class="fs-4 fw-bold">History Database</span>
 

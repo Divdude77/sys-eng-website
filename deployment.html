@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Deployment Manual</title>
+
+        <style>
+            body {
+                line-height: 2rem;
+            }
+            code {
+                background-color: #cecece;
+                padding: 5px;
+                border-radius: 5px;
+            }
+            .code-block {
+                display: block;
+                width: 90%;
+                margin: auto;
+            }
+        </style>
+    </head>
+
+    <body style="font-family: monospace;">
+        <h1>Deployment Manual</h1>
+        <p>Deployment of our project is done using the following steps:</p>
+
+        <h2>Hardware</h2>
+        <ul>
+            <li>Connect the BME680 sensor to the Raspberry Pi via jumper wires using the given pinout diagram:</li>
+            <img src="assets/img/deployment/pinout.png" alt="Pinout Diagram" height="400px">
+            <li>Next, connect the olfactometer to the Raspberry Pi via USB to any port.</li>
+            <li>Hardware setup is complete!</li>
+        </ul>
+
+        <h2>Software</h2>
+        <ul>
+            <li>Firstly, access the desktop of your Raspberry Pi, either using an HDMI display with a keyboard and mouse, or some third-party screen viewing software such as VNCViewer.</li>
+            <li>On the raspberry pi, clone the repository from GitHub by typing the following command in the terminal:</li>
+        </ul>
+            <code class="code-block">git clone https://github.com/OW-SmellDigital/bme680-sensor</code> (Note that this is a private repository so you need to have access to it)
+        <ul>
+            <li>Next, change the current directory to the newly created project directory by:</li>
+        </ul>
+            <code class="code-block">cd bme680-sensor</code>
+        <ul>
+            <li>Install the required libraries using the following command:</li>
+        </ul>    
+            <code class="code-block">pip install -r requirements.txt</code>
+        <ul>
+            <li>Before running the main script, set any important constants in <code>src/setUp/constants.py</code>, such as which USB port the olfactometer is connected to.</li>
+            <li>Finally, run the web server by typing the following command in the terminal:</li>
+        </ul>
+            <code class="code-block">python3 src/app.py</code>
+        <ul>
+            <li>The web server should now be running and you can access the web interface by typing the IP address of the Raspberry Pi in a web browser on any device connected to the same network, or going to <code>127.0.0.1:5000</code> in the browser of the the Raspberry Pi itself.</li>
+            <li>If you don't know the local IP address of your Raspberry Pi, you can obtain it by entering the command <code>ifconfig</code> in the terminal, as shown in the below image (the local IP is highlighted).</li>
+            <img src="assets/img/deployment/ifconfig.png" alt="ifconfig" height="400px">
+        </ul>
+    </body>
+</html>
