@@ -49,12 +49,12 @@
         </ul>    
             <code class="code-block">pip install -r requirements.txt</code>
         <ul>
-            <li>Before running the main script, set any important constants in <code>src/setUp/constants.py</code>, such as which USB port the olfactometer is connected to.</li>
+            <li>Before running the main script, set any important constants in <code>src/setUp/constants.py</code>, importantly which USB port the olfactometer is connected to, in the <code>OLFAC_PORT</code> variable.</li>
             <li>Finally, run the web server by typing the following command in the terminal:</li>
         </ul>
             <code class="code-block">python3 src/app.py</code>
         <ul>
-            <li>The web server should now be running and you can access the web interface by typing the IP address of the Raspberry Pi in a web browser on any device connected to the same network, or going to <code>127.0.0.1:5000</code> in the browser of the the Raspberry Pi itself.</li>
+            <li>The web server should now be running and you can access the web interface by typing the IP address of the Raspberry Pi followed by <code>:5000</code> in a web browser on any device connected to the same network, or going to <code>127.0.0.1:5000</code> in the browser of the the Raspberry Pi itself.</li>
             <li>If you don't know the local IP address of your Raspberry Pi, you can obtain it by entering the command <code>ifconfig</code> in the terminal, as shown in the below image (the local IP is highlighted).</li>
             <img src="assets/img/deployment/ifconfig.png" alt="ifconfig" height="400px">
         </ul>

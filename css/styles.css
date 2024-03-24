@@ -11366,6 +11366,7 @@ code {
   width: 150px;
   border-radius: 50%;
   border: 2px solid black;
+  background-size: cover;
 }
 
 .team-card-text {
@@ -11378,6 +11379,24 @@ code {
 
 .team-card-icons a {
   color: black;
+}
+
+.team-card-container .team-card:nth-child(1) > .team-card-img {
+  background: url('../assets/img/charlotte.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.team-card-container .team-card:nth-child(2) > .team-card-img {
+  background: url('../assets/img/div.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.team-card-container .team-card:nth-child(3) > .team-card-img {
+  background: url('../assets/img/stanley.jpeg');
+  background-size: cover;
+  background-position: center;
 }
 
 @keyframes hover {
