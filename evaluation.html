@@ -58,8 +58,6 @@
             <div class="row gx-5 justify-content-center mb-4">
                 <div class="h4 fs-1 text-black font-alt page-subheading">Summary of achievements<hr></div>
                 <div class="fs-5 text-black">
-
-                    <span class="fs-4 fw-bold">Achivements</span><br>
                     This is a summary of the major achievements of our project:
                     <ul>
                         <li>Web application-based UI which can be accessed through any web browser</li>
@@ -70,11 +68,69 @@
                         <li>Identification of scents in a file using any user-created model</li>
                     </ul>
                     <br>
-
-                    <span class="fs-4 fw-bold">MoSCoW table</span><br>
-
-                    <!-- TODO: MOSCOW TABLE -->
                 </div>
+
+                <div class="h4 fs-1 text-black font-alt page-subheading">MoSCoW Table<hr></div>
+                <div class="fs-5 text-black">
+                    <table>
+                        <tr>
+                            <th>Requirement</th>
+                            <th>Priority</th>
+                            <th>Completed?</th>
+                            <th>Contributors</th>
+                        </tr>
+                        <tr>
+                            <td>ML system to identify gas based on pattern of change in resistance across different heater temperatures, at different concentration levels</td>
+                            <td>Must</td>
+                            <td>✓</td>
+                            <td>Stanley</td>
+                        </tr>
+                        <tr>
+                            <td>Data-synthesis system which collects data to establish unique fingerprints for different scents through feature extraction pipeline</td>
+                            <td>Must</td>
+                            <td>✓</td>
+                            <td>Stanley</td>
+                        </tr>
+                        <tr>
+                            <td>Interface for interacting with olfactometer, reading from sensor, and using ML algorithm for identification</td>
+                            <td>Must</td>
+                            <td>✓</td>
+                            <td>Charlotte, Divyanshu</td>
+                        </tr>
+                        <tr>
+                            <td>Interface for creating and training new ML models</td>
+                            <td>Should</td>
+                            <td>✓</td>
+                            <td>Divyanshu, Charlotte</td>
+                        </tr>
+                        <tr>
+                            <td>Scents database to uniquely identify and store scents</td>
+                            <td>Should</td>
+                            <td>✓</td>
+                            <td>Charlotte</td>
+                        </tr>
+                        <tr>
+                            <td>Support vector machines to identify gases</td>
+                            <td>Could</td>
+                            <td>✗</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>ML algorithm to recognize and identify scents in real time</td>
+                            <td>Could</td>
+                            <td>✗</td>
+                            <td>N/A</td>
+                        </tr>
+                    </table>
+                    <br>
+
+                    Percentage of key functionalities (MUST & SHOULD) completed: <strong>100%</strong>
+                    <br><br>
+                    Percentage of optional functionalities (COULD) completed: <strong>0%</strong>
+                    <br><br>
+                      
+                </div>
+
                 <div class="h4 fs-1 text-black font-alt page-subheading">Known bugs<hr></div>
                 <div class="fs-5 text-black">
                     <table>
@@ -85,7 +141,7 @@
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>Stopping the data collection cycle sometimes does not kill all threads involved</td>
+                            <td>Stopping the data collection cycle from UI does not account for time taken for all threads to be killed before UI considers system to have been stopped.</td>
                             <td>Low</td>
                         </tr>
                         <tr>
@@ -183,12 +239,23 @@
                             <td><strong>Frontend development, systems integration, website and blog</strong></td>
                             <td><strong>Frontend development, hardware integration, video editor</strong></td>
                         </tr>
-                    </table>                      
+                    </table>
+                    <br><br>
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">Evaluation<hr></div>
                 <div class="fs-5 text-black">
-                    <!-- TODO: CRITICAL EVALUATION OF ENTIRE PROJ -->
+                    <span class="fs-4 fw-bold">Functionality</span><br>
+                    The functionality of the entire package is sound and offers a generalised process for any scent identification task. We also save the necessary attributes to add additional training to existing model or conduct further analysis, using the version of the model which had the best test accuracy in the previous session. We also store only the necessary attributes to pick up the task from the previous session, while not saving the less important attributes to ensure the saves do not overload the lightweight hardware’s storage. We recognise that utilising better hardware can offer speedup in training while potentially yielding better performance as it can leverage more data. However, constrained by the cost of better hardware, we have delivered on the requirements demonstrated to a sufficient degree the feasibility of the automated system where clients may take the project further with appropriate hardware if they find use cases which deem it necessary.<br><br>
+
+                    <span class="fs-4 fw-bold">Stability</span><br>
+                    From our testing we observe that test accuracy remains stable across sessions when given sufficient amount of data, where consistently low test accuracy can always be resolved by collecting more high quality data. Constrained by time, we have yet to experiment in more diverse set of environments to ensure this test accuracy can hold up in environments which may have higher variability in sensor readings or sees large changes in environmental temperature and humidity and have more air flow, especially given our constraint of using a single MOS sensor as opposed to an array of sensors. However, throughout our testing in indoors environments with air conditioning, the test accuracy has held up well despite being near windows which is particularly prone to temperature changes when heaters are on when the building is occupied and when the building is vacant. We do note that Raspberry Pi can sometimes shut off without warning, and is hence inaccessible remotely when left on for months.<br><br>
+
+                    <span class="fs-4 fw-bold">Maintainability</span><br>
+                    Our code is extensively documented with docstrings describing the role of every function and its parameters and how they interact with other function in the class, as well as the prerequisites which are not apparent from the function itself. We have also written the code to be modular where each function can be taken out and tested in isolation in Jupyter Notebook, which is particularly useful if an extension is necessary at a later date. Where function docstrings is not sufficient, we describe the roles of each component and how they interact with each other in the documentation and implementation section of this website.<br><br>
+
+                    <span class="fs-4 fw-bold">Project management</span><br>
+                    Each step of this project is extensively documented in our shared workspace which we use to delegate tasks, organise and share information, and track progress and set deadlines. We would also like to express gratitude to our clients and the team at OWidgets for their frequent, timely, and detailed feedback, who had tremendous patience and shown us good spirit of collaboration.<br><br>
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">Future Work<hr></div>
@@ -201,8 +268,11 @@
                     <span class="fs-4 fw-bold">Live identification</span><br>
                     Our project currently only allows for identification of scents from data stored in a file. In future work, it would be beneficial to implement a feature which allows for scents to be identified in real time without the data having to be stored in a file, which could be useful in other practical applications as well.<br><br>
 
-                    <span class="fs-4 fw-bold">hyperparameter search</span><br>
+                    <span class="fs-4 fw-bold">Hyperparameter search</span><br>
                     Due to time constraints, we did not test a wide range of hyperparameters. Future work could involve testing a wider range of various hyperparameters to see if the model can be improved further in order to find the best performing model. This could also involve training the model to recognise the concentration of a single scent.<br><br>
+
+                    <span class="fs-4 fw-bold">More heater profiles</span><br>
+                    Due to time constraints, we were not able to experiment with many heater profiles for the BME680 sensor, and used an existing heater profile from Bosche. Future work could involve experimenting with different heater profiles to see if a profile yielding better data for training a model can be found.<br><br>
 
                     <span class="fs-4 fw-bold">Multi-scent identification</span><br>
                     Currently, our system can only identify one scent at a time. Future developers could build on our project to allow for the identification of a mixture of scents, as well as the concentrations of each scent in the mixture.<br><br>
