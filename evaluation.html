@@ -77,12 +77,113 @@
                 </div>
                 <div class="h4 fs-1 text-black font-alt page-subheading">Known bugs<hr></div>
                 <div class="fs-5 text-black">
-                    <!-- TODO: KNOWN BUGS TABLE -->
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Bug description</th>
+                            <th>Priority</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Stopping the data collection cycle sometimes does not kill all threads involved</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Model training occasionally underestimates time left for training duration</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Relevance table may be set to None when all features are not relevant to the set number of classes</td>
+                            <td>Low</td>
+                        </tr>
+                    </table>
+                    <br><br>
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">Individual contribution<hr></div>
                 <div class="fs-5 text-black">
-                    <!-- TODO: INDIV CONTRIBUTION TABLE -->
+                    <table>
+                        <tr>
+                            <th>Task</th>
+                            <th>Stanley</th>
+                            <th>Divyanshu</th>
+                            <th>Charlotte</th>
+                        </tr>
+                        <tr>
+                            <td>Client liason</td>
+                            <td>30</td>
+                            <td>10</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td>Requirements analysis</td>
+                            <td>33</td>
+                            <td>33</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>HCI</td>
+                            <td>20</td>
+                            <td>40</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>Pitch presentations</td>
+                            <td>33</td>
+                            <td>33</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>Research</td>
+                            <td>50</td>
+                            <td>25</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>Coding</td>
+                            <td>40</td>
+                            <td>30</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>Testing</td>
+                            <td>60</td>
+                            <td>20</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>Project website</td>
+                            <td>33</td>
+                            <td>34</td>
+                            <td>33</td>
+                        </tr>
+                        <tr>
+                            <td>Blog</td>
+                            <td>0</td>
+                            <td>50</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Video editing</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Overall</strong></td>
+                            <td><strong>34</strong></td>
+                            <td><strong>33</strong></td>
+                            <td><strong>33</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Main roles</strong></td>
+                            <td><strong>Data synthesis system, research, data analysis, machine learning</strong></td>
+                            <td><strong>Frontend development, systems integration, website and blog</strong></td>
+                            <td><strong>Frontend development, hardware integration, video editor</strong></td>
+                        </tr>
+                    </table>                      
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">Evaluation<hr></div>
@@ -100,9 +201,11 @@
                     <span class="fs-4 fw-bold">Live identification</span><br>
                     Our project currently only allows for identification of scents from data stored in a file. In future work, it would be beneficial to implement a feature which allows for scents to be identified in real time without the data having to be stored in a file, which could be useful in other practical applications as well.<br><br>
 
+                    <span class="fs-4 fw-bold">hyperparameter search</span><br>
+                    Due to time constraints, we did not test a wide range of hyperparameters. Future work could involve testing a wider range of various hyperparameters to see if the model can be improved further in order to find the best performing model. This could also involve training the model to recognise the concentration of a single scent.<br><br>
+
                     <span class="fs-4 fw-bold">Multi-scent identification</span><br>
                     Currently, our system can only identify one scent at a time. Future developers could build on our project to allow for the identification of a mixture of scents, as well as the concentrations of each scent in the mixture.<br><br>
-
 
                 </div>
             </div>
