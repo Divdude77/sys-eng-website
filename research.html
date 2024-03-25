@@ -65,7 +65,7 @@
                         <li>Monitoring air quality</li>
                         <li>Breath analysis for medical conditions</li>
                     </ol>
-                    With this constraint, we first investigated the feasibility of the scent classification task by listing  known issues and currently available systems and use cases. The section below summarises our findings.<br>
+                    With this constraint, we first investigated the feasibility of the scent classification task by listing  known issues and currently available systems and use cases. The section below summarises our findings.<br><br>
                 </div>
                 <div class="h4 fs-1 text-black font-alt page-subheading">Issues with Metal Oxide Sensors (MOX Sensors)<hr></div>
                 <div class="fs-5 text-black">
@@ -215,6 +215,7 @@
                         <li>To truly achieve generally applicable scent classification, we used automated feature extraction offered by the Python Library TsFresh, which forgoes the labor intensive hand crafted features, which are often only applicable to very narrow use cases.</li>
                         <li>We use only standardisation in preprocessing so that sensor and session variability is minimised, so that the model is more generalisable.</li>
                     </ul>
+                    <br>
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">Performance in Open v.s. Closed Environments<hr></div>
@@ -264,6 +265,7 @@
                         <li>This is a substantial improvement from the initial 70% we achieved with minimal feature extraction (and without).</li>
                         <li>The feature relevance calculations show that no feature is relevant for all 5 scent classes, which differs from the contained experiment. This indicates the necessity for using more features when training a model for classification in open air to maintain acceptable performance.</li>
                     </ul>
+                    <br>
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">Learning Hidden Representations of Scent without Timestamps<hr></div>
@@ -296,6 +298,7 @@
                         <li>Training on the 32 features that are relevant to the classification of all scents, we once again get 78.54% accuracy on the test set.</li>
                         <li>To minimize class imbalance, excluding air from the dataset we get 76.12% accuracy.</li>
                     </ul>
+                    <br>
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">Final Machine Learning Architecture<hr></div>
@@ -331,6 +334,7 @@
                         <li>The Raspberry Pi also benefits from a robust ecosystem of community support, documentation, and resources. This ensured accessibility to troubleshooting guides, tutorials, and libraries, simplifying development and troubleshooting processes.</li>
                         <li>The Raspberry Pi's scalability made it well-suited for potential future expansions or modifications to our project. Its ability to handle additional sensors, peripherals, or functionalities provided flexibility for future enhancements or iterations of the system.</li>
                     </ul>
+                    <br>
                 </div>
 
                 <div class="h4 fs-1 text-black font-alt page-subheading">References<hr></div>
